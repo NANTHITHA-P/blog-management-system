@@ -1,6 +1,5 @@
 const Blog = require("../models/blog");
 
-// ✅ Add Blog
 const addBlog = async (req, res) => {
   try {
     const authorId = req.user.userId;
@@ -23,9 +22,6 @@ const addBlog = async (req, res) => {
   }
 };
 
-
-
-// ✅ Get All Blogs
 const getBlog = async (req, res) => {
   try {
     const blogs = await Blog.find().sort({ createdAt: -1 });
@@ -35,9 +31,6 @@ const getBlog = async (req, res) => {
   }
 };
 
-
-
-// ✅ Get My Blogs
 const getMyBlog = async (req, res) => {
   try {
     const blogs = await Blog.find({ authorId: req.user.userId })
@@ -49,9 +42,6 @@ const getMyBlog = async (req, res) => {
   }
 };
 
-
-
-// ✅ Get Blog By ID
 const getBlogByID = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
@@ -70,8 +60,6 @@ const getBlogByID = async (req, res) => {
 };
 
 
-
-// ✅ Add Like / Unlike
 const addLike = async (req, res) => {
   try {
     const blogId = req.params.blogId;
@@ -105,9 +93,6 @@ const addLike = async (req, res) => {
   }
 };
 
-
-
-// ✅ Add Comment
 const addComment = async (req, res) => {
   try {
     const blogId = req.params.blogId;
@@ -135,8 +120,6 @@ const addComment = async (req, res) => {
 };
 
 
-
-// ✅ Delete My Blog
 const deleteMyBlog = async (req, res) => {
   try {
     const blog = await Blog.findOneAndDelete({
